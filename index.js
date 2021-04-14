@@ -31,7 +31,6 @@ let total = 0;
 for (let i = 0; i < 10; i++) {
 	total += i + 1;
 }
-console.log(total);
 
 function sum(numbers) {
 	let total = 0;
@@ -40,14 +39,6 @@ function sum(numbers) {
 	}
 	return total;
 }
-
-console.log(sum([1, 2, 3, 4, 5]));
-
-const array = [1, 2, 3];
-
-array.forEach((currentValue) => {
-	console.log(currentValue);
-});
 
 function sum(numbers) {
 	let total = 0;
@@ -74,4 +65,61 @@ function isEvenInclueded(numbers) {
 	return isEvenInclueded;
 }
 const array = [1, 5, 10, 15, 20];
-console.log(isEvenInclueded(array));
+
+// function filterEven(numbers) {
+// 	const results = [];
+// 	for (let i = 0; i < numbers.length; i++) {
+// 		const num = numbers[i];
+// 		if (!isEven(num)) {
+// 			continue;
+// 		}
+// 		results.push(num);
+// 	}
+// 	return results;
+// }
+
+// console.log(filterEven(array));
+console.log(array.filter(isEven));
+
+const obj = {
+	a: 1,
+	b: 2,
+	c: 3,
+};
+
+for (const key in obj) {
+	const value = obj[key];
+	console.log(`key:${key}, value:${value}`);
+}
+
+for (const value of array) {
+	console.log(value);
+}
+
+function sum(numbers) {
+	return numbers.reduce((total, num) => {
+		return total + num;
+	}, 0);
+}
+
+const obj1 = new Object();
+console.log(obj1);
+
+const languages = {
+	ja: "日本語",
+	en: "英語",
+};
+
+const { ja, en } = languages;
+console.log(ja);
+console.log(en);
+
+("use strict");
+const object = Object.freeze({ key: "value" });
+object.key = "value";
+
+const object1 = { key: undefined };
+
+if (object1.hasOwnProperty("key")) {
+	console.log("'object1'は'key'プロパティを持っている");
+}
