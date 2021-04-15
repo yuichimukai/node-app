@@ -145,3 +145,11 @@ function myFunc() {
 	});
 }
 myFunc("a", "b", "c");
+
+const pattern = /ES(\d+)/g;
+const matchesIterator = "ES2015、ES2016、ES2017".matchAll(pattern);
+for (const match of matchesIterator) {
+	console.log(
+		`match:"${match[0]}", capture1: ${match[1]}, index: ${match.index}, input: "${match.input}"`
+	);
+}
