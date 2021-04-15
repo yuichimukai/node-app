@@ -81,17 +81,6 @@ const array = [1, 5, 10, 15, 20];
 // console.log(filterEven(array));
 console.log(array.filter(isEven));
 
-const obj = {
-	a: 1,
-	b: 2,
-	c: 3,
-};
-
-for (const key in obj) {
-	const value = obj[key];
-	console.log(`key:${key}, value:${value}`);
-}
-
 for (const value of array) {
 	console.log(value);
 }
@@ -123,3 +112,20 @@ const object1 = { key: undefined };
 if (object1.hasOwnProperty("key")) {
 	console.log("'object1'は'key'プロパティを持っている");
 }
+
+const objee = {
+	a: {
+		b: "objのaプロパティのbプロパティ",
+	},
+};
+
+console.log(objee?.a?.b);
+
+const shallowClone = (obj) => {
+	return Object.assign({}, obj);
+};
+
+const obj = { a: "a" };
+const cloneObj = shallowClone(obj);
+console.log(cloneObj);
+console.log(obj === cloneObj);
