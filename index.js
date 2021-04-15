@@ -129,3 +129,19 @@ const obj = { a: "a" };
 const cloneObj = shallowClone(obj);
 console.log(cloneObj);
 console.log(obj === cloneObj);
+
+const array1 = ["A", "B", "C", "D", "E"];
+console.log(array1.slice(0, 5));
+
+const array3 = [1, 2, 3];
+array3.length = 0;
+console.log(array3);
+
+function myFunc() {
+	const argumentsArray = Array.from(arguments);
+	console.log(Array.isArray(argumentsArray));
+	argumentsArray.forEach((arg) => {
+		console.log(arg);
+	});
+}
+myFunc("a", "b", "c");
