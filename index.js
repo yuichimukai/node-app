@@ -153,3 +153,25 @@ for (const match of matchesIterator) {
 		`match:"${match[0]}", capture1: ${match[1]}, index: ${match.index}, input: "${match.input}"`
 	);
 }
+function countOfCodePoints(str, codePoint) {
+	let count = 0;
+	for (const item of str) {
+		if (item === codePoint) {
+			count++;
+		}
+	}
+	return count;
+}
+console.log(countOfCodePoints("🐙🐙🙉 ", "🐙"));
+
+const obj = {
+	method1: function () {
+		return this;
+	},
+	method2() {
+		return this;
+	},
+};
+
+console.log(obj.method1());
+console.log(obj.method2());
