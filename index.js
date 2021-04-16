@@ -175,3 +175,87 @@ const obj = {
 
 console.log(obj.method1());
 console.log(obj.method2());
+
+const Prefixer = {
+	prefix: "pre",
+	prefixArray(strings) {
+		const that = this;
+		return strings.map(function (str) {
+			return that.prefix + "-" + str;
+		});
+	},
+};
+
+function outer() {
+	return () => {
+		return this;
+	};
+}
+
+const innerArrowFunction = outer();
+console.log(innerArrowFunction());
+
+class Myclass {}
+
+const myClass = new Myclass();
+
+class Point {
+	constructor(x, y) {
+		this.x = x;
+		this.y = y;
+	}
+}
+
+//変数名にはキャメルケースを用いる
+
+//コンストラクタ関数
+const Point = function PointConstructor(x, y) {
+	this.x = x;
+	this.y = y;
+};
+
+const point = new Point(3, 4);
+
+class ArrayLike {
+	constructor(items = []) {
+		this._items = items;
+	}
+
+	get items() {
+		return this._items;
+	}
+
+	get length() {
+		return this._items.length;
+	}
+
+	set length(newLength) {
+		const currentItemLength = this.items.length;
+		if (newLength < currentItemLength) {
+			this._items = this.items.slice(0, newLength);
+		} else if (newLength > currentItemLength) {
+			this._items = this.items.concat(new Array(newLength - currentItemLength));
+		}
+	}
+}
+
+const arrayLike = new ArrayLike([1, 2, 3, 4, 5]);
+arrayLike.length = 2;
+console.log(arrayLike.items.join(","));
+arrayLike.length = 5;
+console.log(arrayLike.items.join(","));
+
+Object.getPrototypeOf(オブジェクト);
+
+class Parent {
+	constructor(...args) {
+		console.log("#", ...args);
+	}
+}
+
+class Child extends Parent {
+	constructor(...args) {
+		super(...args);
+		console.log("#", ...args);
+	}
+}
