@@ -259,3 +259,82 @@ class Child extends Parent {
 		console.log("#", ...args);
 	}
 }
+
+function assertPositiveNumber(num) {
+	if (num < 0) {
+		throw new Error(`${num} is not positive`);
+	}
+}
+
+try {
+	assertPositiveNumber(-1);
+} catch (error) {
+	console.log(error instanceof Error);
+	console.log(error.message);
+}
+
+function reverseString(str) {
+	if (typeof str != "string") {
+		throw new TypeError(`$(str) is not a string`);
+	}
+	return Array.from(str).reverse().join("");
+}
+
+try {
+	reverseString(100);
+} catch (error) {
+	console.log(error instanceof TypeError);
+	console.log(error.name);
+	console.log(error.message);
+}
+
+setTimeout(() => {
+	try {
+		throw new Error("エラー");
+	} catch (error) {
+		console.log("エラーをキャッチできる");
+	}
+}, 10);
+console.log("この行は実行されます");
+
+function errorPromise(message) {
+	return new Promise((resolve, reject) => {
+		reject(new Error(message));
+	});
+}
+
+errorPromise("thenでエラーハンドリング").then(undefined, (error) => {
+	console.log(error.message);
+});
+errorPromise("catchでエラーハンドリング").catch((error) => {
+	console.log(erro.message);
+});
+
+const promise = new Promise((resolve, reject) => {
+	setTimeout(() => {
+		resolve();
+		reject(new Error("エラー"));
+	}, 16);
+});
+promise.then(
+	() => {
+		console.log("fullfilledとなった");
+	},
+	(error) => {
+		//この行はよびだされない
+	}
+);
+
+function asyncTask() {
+	return Math.random() > 0.5
+		? Promise.resolve("成功")
+		: Promise.reject(new Error("失敗"));
+}
+
+asyncTask()
+	.then(function onFulfilled(value) {
+		console.log(value);
+	})
+	.catch(function onRejected(error) {
+		console.log(error.message);
+	});
