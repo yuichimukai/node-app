@@ -476,3 +476,25 @@ for (const value of set) {
 }
 
 console.log(results);
+
+const obj = { id: 1, name: "js-primer", bio: null };
+const replacer = (key, value) => {
+	if (value === null) {
+		return undefined;
+	}
+	return value;
+};
+
+console.log(JSON.stringify(obj, replacer));
+
+const now = new Date();
+
+for (let i = 0; i < 5; i++) {
+	console.log(Math.random());
+}
+
+function getRandom(min, max) {
+	return Math.random() * (max - min) + min;
+}
+
+console.log(getRandom(1, 5));
